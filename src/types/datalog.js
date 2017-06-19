@@ -4,6 +4,7 @@ export type Row = {
   chlorine: Number,
   temp: Number,
   ph: Number,
+  timestamp: Date,
 };
 
 export type DataRows = Array<Rows>;
