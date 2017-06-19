@@ -11,8 +11,11 @@ import {
   YAxis,
 } from "recharts";
 
+import type { DataRows } from "../types/datalog";
+
 type Props = {
   datalogActions: Object,
+  rows: DataRows,
 };
 
 export default class ChartComponent extends React.PureComponent {
@@ -23,11 +26,11 @@ export default class ChartComponent extends React.PureComponent {
     return (
       <div className="Log">
       <LineChart width={500} height={300} data={rows}>
+        <YAxis type="number"  domain={[0, 40]} dataKey="temp" />
+        <Line type='monotone' dataKey='temp' stroke='#f884d8' strokeWidth={2} />
         <Line type='monotone' dataKey='chlorine' stroke='#8884d8' strokeWidth={2} />
         <Line type='monotone' dataKey='ph' stroke='#8884d8' strokeWidth={2} />
         <XAxis dataKey="timestamp"/>
-        <YAxis type="number" orientation="left" yAxisI="ph" domain={[0, 14.0]} dataKey="ph" />
-        <YAxis type="number" orientation="right" yAxisId="chlorine" domain={[0, 4.0]} dataKey="chlorine" />
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
         <Legend />
