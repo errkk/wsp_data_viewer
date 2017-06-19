@@ -1,0 +1,19 @@
+body {
+  font-family: Helvetica;
+  background: #eee;
+  color: #555;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0; }
+
+p {
+  margin: 0.5em 0; }
+  p:last-child {
+    margin-bottom: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none; }

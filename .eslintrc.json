@@ -1,0 +1,42 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": ["react", "flowtype", "import"],
+    "extends": "react-app",
+    "rules": {
+        "indent": [ "error", 2 ],
+        "linebreak-style": [ "error", "unix" ],
+        "quotes": [ "error", "double" ],
+        "semi": [ "error", "always" ],
+        "arrow-parens": [2, "as-needed"],
+        "eol-last": [0, "always"],
+        "comma-dangle": [2, "always-multiline"],
+        "flowtype/define-flow-type": 1,
+        "flowtype/use-flow-type": 1,
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*_test.js"]}],
+        "import/prefer-default-export": 0,
+        "import/no-duplicates": 1,
+        "no-param-reassign": [2, {"props": false}],
+        "quote-props": ["error", "as-needed", { "numbers": true }],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-no-bind": 1,
+        "react/prefer-es6-class": [1, "always"],
+        "react/prefer-stateless-function": 0,
+        "react/sort-comp": 0,
+        "space-before-function-paren": [2, "always"],
+        "strict": 0,
+        "semi": [1, "always"],
+        "global-require": 0,
+        "no-duplicate-imports": 0
+    }
+}
