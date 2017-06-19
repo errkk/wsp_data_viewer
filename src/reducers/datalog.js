@@ -1,12 +1,12 @@
 // @flow
 
+import {
+  RECEIVE_DATALOG_DATA,
+} from "../actions/actionTypes";
+
 import type {
   Action,
 } from "../types/datalog";
-
-import {
-  RECEIVE_DATALOG_DATA,
-} from "../actions";
 
 const defaultState = {
   rows: [],

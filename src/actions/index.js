@@ -7,9 +7,10 @@ import type {
   RequestDatalogData,
 } from "../types/datalog";
 
-export const FETCH_DATALOG_DATA = "FETCH_DATALOG_DATA";
-export const REQUEST_DATALOG_DATA = "REQUEST_DATALOG_DATA";
-export const RECEIVE_DATALOG_DATA = "RECEIVE_DATALOG_DATA";
+import {
+  REQUEST_DATALOG_DATA,
+  RECEIVE_DATALOG_DATA,
+} from "./actionTypes";
 
 const ENDPOINTS = {
   DATALOG: "dev/data",
