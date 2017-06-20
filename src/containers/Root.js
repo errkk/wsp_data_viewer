@@ -23,7 +23,7 @@ const Root = (props: Props) => {
           <HeaderContainer />
           <Route exact path="/" component={page1} />
           <Route path="/chart" component={ChartScreenContainer} />
-          <DevTools />
+          {false && <DevTools />}
         </div>
       </Router>
     </Provider>

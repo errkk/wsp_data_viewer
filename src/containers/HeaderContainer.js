@@ -11,7 +11,10 @@ import * as datalogActions from "../actions/index";
 import HeaderComponent from "../components/HeaderComponent";
 
 const stateToProps = (state: State) => {
-  return { title: "Data" };
+  const { loading } = state.datalog;
+  return {
+    loading,
+  };
 };
 
 const dispatchToProps = (dispatch: Dispatch<DatalogAction>) => {

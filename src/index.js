@@ -3,6 +3,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import createHistory from "history/createBrowserHistory";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import injectTapEventPlugin from "react-tap-event-plugin";
 
 import registerServiceWorker from "./registerServiceWorker";
 import Root from "./containers/Root";
@@ -13,8 +15,20 @@ import "./sass/main.css";
 const history = createHistory();
 const store = configureStore(history);
 
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
+const App = () => (
+  <MuiThemeProvider>
+    <Root store={store} history={history} />
+  </MuiThemeProvider>
+);
+
+
 ReactDOM.render(
-  <Root store={store} history={history} />,
+  <App />,
   document.getElementById("root")
 );
 registerServiceWorker();

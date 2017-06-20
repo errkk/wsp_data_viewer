@@ -2,6 +2,7 @@
 
 import {
   RECEIVE_DATALOG_DATA,
+  REQUEST_DATALOG_DATA,
 } from "../actions/actionTypes";
 
 import type {
@@ -22,10 +23,16 @@ export default (state: State = defaultState, action: Action) => {
   case RECEIVE_DATALOG_DATA:
     return {
       ...state,
+      loading: false,
       rows: action.data.data.map(i => {
         i.timestamp = new Date(i.timestamp);
         return i;
       }),
+    };
+  case REQUEST_DATALOG_DATA:
+    return {
+      ...state,
+      loading: true,
     };
   default:
     return state;
