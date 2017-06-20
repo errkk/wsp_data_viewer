@@ -8,10 +8,10 @@ import type { State } from "../types";
 import type { Action as DatalogAction } from "../types/datalog";
 import * as datalogActions from "../actions/index";
 
-import HeaderComponent from "../components/HeaderComponent";
+import ChartScreenComponent from "../components/ChartScreenComponent";
 
 const stateToProps = (state: State) => {
-  return { title: "Data" };
+  return { rows: state.datalog.rows };
 };
 
 const dispatchToProps = (dispatch: Dispatch<DatalogAction>) => {
@@ -21,4 +21,5 @@ const dispatchToProps = (dispatch: Dispatch<DatalogAction>) => {
   };
 };
 
-export default connect(stateToProps, dispatchToProps)(HeaderComponent);
+export default connect(stateToProps, dispatchToProps)(ChartScreenComponent);
+

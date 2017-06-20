@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import DevTools from "./DevTools";
 import HeaderContainer from "../containers/HeaderContainer";
-import ChartContainer from "../containers/ChartContainer";
+import ChartScreenContainer from "../containers/ChartScreenContainer";
 
 import makePage from "../helpers/makePage";
 
@@ -22,7 +22,7 @@ const Root = (props: Props) => {
         <div>
           <HeaderContainer />
           <Route exact path="/" component={page1} />
-          <Route path="/chart" component={ChartContainer} />
+          <Route path="/chart" component={ChartScreenContainer} />
           <DevTools />
         </div>
       </Router>
