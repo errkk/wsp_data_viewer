@@ -3,7 +3,7 @@
         "browser": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": "react-app",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -12,7 +12,6 @@
         "sourceType": "module"
     },
     "plugins": ["react", "flowtype", "import"],
-    "extends": "react-app",
     "rules": {
         "indent": [ "error", 2 ],
         "linebreak-style": [ "error", "unix" ],

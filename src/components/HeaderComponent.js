@@ -8,18 +8,18 @@ import Button from "./ButtonComponent";
 import "../sass/Header.css";
 
 type Props = {
-  datalogActions: Object,
+  fetchData: Function,
 };
 
 export default class HeaderComponent extends React.PureComponent {
   props: Props;
 
   render () {
-    const { title, fetchData } = this.props;
+    const { fetchData } = this.props;
     return (
       <div className="Header">
         <h2>
-          {title}
+          Chart
         </h2>
 
         <Link to="/chart">Chart</Link> | <Link to="/">Dashboard</Link>
