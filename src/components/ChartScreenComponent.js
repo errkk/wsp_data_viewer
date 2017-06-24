@@ -21,7 +21,7 @@ export default class ChartScreenComponent extends React.PureComponent {
   render () {
     const { rows } = this.props;
     return (
-      <div>
+      <div className="screen-container">
         <h2>
         Chlorine & PH
         </h2>

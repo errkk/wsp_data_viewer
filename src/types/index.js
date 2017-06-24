@@ -1,5 +1,9 @@
 // @flow
 
+import type { DataRows } from "./datalog";
+
 export type State = {
-  entities: { title: String },
+  datalog: {
+    rows: DataRows,
+  },
 };

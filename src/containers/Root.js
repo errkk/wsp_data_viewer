@@ -7,10 +7,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import DevTools from "./DevTools";
 import HeaderContainer from "../containers/HeaderContainer";
 import ChartScreenContainer from "../containers/ChartScreenContainer";
-
-import makePage from "../helpers/makePage";
-
-const page1 = makePage("Page 1");
+import DashboardScreenContainer from "../containers/DashboardScreenContainer";
 
 type Props = { store: Object, history: Object };
 
@@ -21,7 +18,7 @@ const Root = (props: Props) => {
       <Router history={history}>
         <div>
           <HeaderContainer />
-          <Route exact path="/" component={page1} />
+          <Route exact path="/" component={DashboardScreenContainer} />
           <Route path="/chart" component={ChartScreenContainer} />
           {false && <DevTools />}
         </div>

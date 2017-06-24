@@ -7,6 +7,7 @@ import {
 
 import type {
   Action,
+  DataRows,
 } from "../types/datalog";
 
 const defaultState = {

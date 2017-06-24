@@ -7,7 +7,7 @@ export type Row = {
   timestamp: Date,
 };
 
-export type DataRows = Array<Rows>;
+export type DataRows = Array<Row>;
 
 export type RequestDatalogData = {
   type: 'REQUEST_DATALOG_DATA'
@@ -15,7 +15,7 @@ export type RequestDatalogData = {
 
 export type ReceiveDatalogData = {
   type: 'RECEIVE_DATALOG_DATA',
-  data: DataRows,
+  data: { data: DataRows },
 };
 
 export type Action = RequestDatalogData | ReceiveDatalogData;

@@ -11,7 +11,10 @@ import * as datalogActions from "../actions/index";
 import ChartScreenComponent from "../components/ChartScreenComponent";
 
 const stateToProps = (state: State) => {
-  return { rows: state.datalog.rows };
+  const { rows } = state.datalog;
+  return {
+    rows,
+  };
 };
 
 const dispatchToProps = (dispatch: Dispatch<DatalogAction>) => {
