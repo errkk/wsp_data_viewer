@@ -51,7 +51,14 @@ export default class DashboardScreenComponent extends React.PureComponent {
   }
 
   render () {
-    const { timestamp, chlorine, ph, temp, daysSince } = this.props;
+    const {
+      timestamp,
+      chlorine,
+      ph,
+      tempInternal,
+      tempExternal,
+      daysSince,
+    } = this.props;
     const { dataAge } = this.state;
     const updatedAt = timestamp ? `Updated: ${timestamp.toLocaleTimeString()}` : "";
     const days = daysSince ? ` – ${daysSince.toFixed(0)} days ago` : "";
@@ -80,8 +87,14 @@ export default class DashboardScreenComponent extends React.PureComponent {
         </Card>
         <Card>
           <CardTitle
-            title={temp && `${temp.toFixed(2)}ºC`}
-            subtitle="Temperature"
+            title={tempInternal && `${tempInternal.toFixed(2)}ºC`}
+            subtitle="Temperature inside"
+          />
+        </Card>
+        <Card>
+          <CardTitle
+            title={tempExternal && `${tempExternal.toFixed(2)}ºC`}
+            subtitle="Temperature outside"
           />
         </Card>
           <CardHeader

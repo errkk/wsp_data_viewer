@@ -33,6 +33,25 @@ export default class HeaderComponent extends React.PureComponent {
     this.state = {
       drawer: false,
     };
+
+    setInterval(this.isItTimeToReFetchYet, 1000);
+  }
+
+  isItTimeToReFetchYet = () => {
+    const { fetchData, loading, lastRow } = this.props;
+    if (loading) return;
+    const now = new Date();
+    const MAX_AGE = 15 * 60 * 1000;
+    if (!lastRow) {
+      console.log("No last row");
+      // TODO dont get stuck in a loop doing this if shit get stuck
+      fetchData();
+      return;
+    }
+    if (now.getTime() - lastRow.timestamp.getTime() > MAX_AGE) {
+      console.log("we go stale data");
+      fetchData();
+    }
   }
 
   reloadButton () {
