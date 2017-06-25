@@ -65,7 +65,13 @@ export default class ChartScreenComponent extends React.PureComponent {
             type="number"
             domain={[22.0, 35.0]}
             dot={false}
-            dataKey="temp"
+            dataKey="tempInternal"
+          />
+          <YAxis
+            type="number"
+            domain={[22.0, 35.0]}
+            dot={false}
+            dataKey="tempExternal"
           />
           <Line
             type='monotone'

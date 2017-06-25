@@ -14,7 +14,8 @@ type Props = {
   timestamp: ?Date,
   chlorine: ?Number,
   ph: ?Number,
-  temp: ?Number,
+  tempExternal: ?Number,
+  tempInternal: ?Number,
   daysSince: ?Number,
 };
 

@@ -2,7 +2,8 @@
 
 export type Row = {
   chlorine: Number,
-  temp: Number,
+  tempInternal: Number,
+  tempExternal: Number,
   ph: Number,
   timestamp: Date,
 };
