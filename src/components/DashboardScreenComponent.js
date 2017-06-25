@@ -8,6 +8,7 @@ import {
   CardTitle,
   CardText,
 } from "material-ui/Card";
+import { getDataAge } from "../helpers/utils";
 
 type Props = {
   timestamp: ?Date,
@@ -44,8 +45,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
   updateTimeAgo = (): void => {
     const { timestamp } = this.props;
     if (!timestamp) return;
-    const now = new Date();
-    const dataAge = (now.getTime() - timestamp.getTime()) / 1000;
+    const dataAge = getDataAge(timestamp);
     this.setState({dataAge});
   }
 
