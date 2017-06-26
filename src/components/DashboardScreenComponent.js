@@ -8,6 +8,12 @@ import {
   CardTitle,
   CardText,
 } from "material-ui/Card";
+import {
+  Line,
+  LineChart,
+  YAxis,
+} from "recharts";
+
 import { getDataAge } from "../helpers/utils";
 
 type Props = {
@@ -52,22 +58,25 @@ export default class DashboardScreenComponent extends React.PureComponent {
 
   render () {
     const {
-      timestamp,
       chlorine,
-      ph,
-      tempInternal,
-      tempExternal,
       daysSince,
+      ph,
+      rows,
+      tempExternal,
+      tempInternal,
+      timestamp,
     } = this.props;
     const { dataAge } = this.state;
     const updatedAt = timestamp ? `Updated: ${timestamp.toLocaleTimeString()}` : "";
     const days = daysSince ? ` – ${daysSince.toFixed(0)} days ago` : "";
+    const someRows = rows.slice(-40);
     let ageString;
     if (dataAge > 59) {
       ageString = timestamp && updatedAt + days;
     } else {
       ageString = `Updated: ${Math.round(dataAge)} seconds ago`;
     }
+
     return (
       <div className="screen-container">
         <h2>
@@ -90,12 +99,29 @@ export default class DashboardScreenComponent extends React.PureComponent {
             title={tempInternal && `${tempInternal.toFixed(2)}ºC`}
             subtitle="Temperature inside"
           />
+          <LineChart width={200} height={100} data={someRows}>
+            <Line
+              type='monotone'
+              dataKey='tempInternal'
+              stroke='#08d408'
+              strokeWidth={2}
+            />
+          </LineChart>
         </Card>
         <Card>
           <CardTitle
             title={tempExternal && `${tempExternal.toFixed(2)}ºC`}
             subtitle="Temperature outside"
           />
+
+          <LineChart width={200} height={100} data={someRows}>
+            <Line
+              type='monotone'
+              dataKey='tempExternal'
+              stroke='#08d408'
+              strokeWidth={2}
+            />
+          </LineChart>
         </Card>
           <CardHeader
             title={ageString}
