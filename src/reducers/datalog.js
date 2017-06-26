@@ -25,7 +25,7 @@ export default (state: State = defaultState, action: Action) => {
     return {
       ...state,
       loading: false,
-      rows: action.data.data.map(i => {
+      rows: action.data.data.slice(-50).map(i => {
         i.timestamp = new Date(i.timestamp);
         return i;
       }),

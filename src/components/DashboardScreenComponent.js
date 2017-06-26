@@ -66,7 +66,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
     if (dataAge > 59) {
       ageString = timestamp && updatedAt + days;
     } else {
-      ageString = `Updated: ${dataAge} seconds ago`;
+      ageString = `Updated: ${Math.round(dataAge)} seconds ago`;
     }
     return (
       <div className="screen-container">
