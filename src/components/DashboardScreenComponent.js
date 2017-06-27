@@ -8,6 +8,7 @@ import {
   CardTitle,
   CardText,
 } from "material-ui/Card";
+import { colors } from "material-ui/styles";
 import {
   Line,
   LineChart,
@@ -28,6 +29,8 @@ type Props = {
 type State = {
   dataAge: number,
 };
+
+const STROKE_WIDTH = 3;
 
 export default class DashboardScreenComponent extends React.PureComponent {
   props: Props;
@@ -77,6 +80,8 @@ export default class DashboardScreenComponent extends React.PureComponent {
       ageString = `Updated: ${Math.round(dataAge)} seconds ago`;
     }
 
+    const lineChartProps = { width: 200, height: 50, data: someRows };
+
     return (
       <div className="screen-container">
         <h2>
@@ -87,26 +92,48 @@ export default class DashboardScreenComponent extends React.PureComponent {
             title={chlorine && `${chlorine.toFixed(2)}ppm`}
             subtitle="Chlorine"
           />
+          <CardText>
+            <LineChart {...lineChartProps}>
+              <Line
+                type="monotone"
+                dataKey="chlorine"
+                stroke={colors.teal500}
+                strokeWidth={STROKE_WIDTH}
+              />
+            </LineChart>
+          </CardText>
         </Card>
         <Card>
           <CardTitle
             title={ph && ph.toFixed(2)}
             subtitle="PH"
           />
+          <CardText>
+            <LineChart {...lineChartProps}>
+              <Line
+                type="monotone"
+                dataKey="chlorine"
+                stroke={colors.indigo500}
+                strokeWidth={STROKE_WIDTH}
+              />
+            </LineChart>
+          </CardText>
         </Card>
         <Card>
           <CardTitle
             title={tempInternal && `${tempInternal.toFixed(2)}ºC`}
             subtitle="Temperature inside"
           />
-          <LineChart width={200} height={100} data={someRows}>
-            <Line
-              type='monotone'
-              dataKey='tempInternal'
-              stroke='#08d408'
-              strokeWidth={2}
-            />
-          </LineChart>
+          <CardText>
+            <LineChart {...lineChartProps}>
+              <Line
+                type="monotone"
+                dataKey="tempInternal"
+                stroke={colors.pink500}
+                strokeWidth={STROKE_WIDTH}
+              />
+            </LineChart>
+          </CardText>
         </Card>
         <Card>
           <CardTitle
@@ -118,8 +145,8 @@ export default class DashboardScreenComponent extends React.PureComponent {
             <Line
               type='monotone'
               dataKey='tempExternal'
-              stroke='#08d408'
-              strokeWidth={2}
+              stroke={colors.orange500}
+              strokeWidth={STROKE_WIDTH}
             />
           </LineChart>
         </Card>

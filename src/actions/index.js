@@ -20,7 +20,7 @@ import { getLastRow } from "../selectors/datalog-selectors";
 import { getDataAge } from "../helpers/utils";
 
 const ENDPOINTS = {
-  DATALOG: "dev/data",
+  DATALOG: "https://zbutev8ga7.execute-api.eu-west-2.amazonaws.com/dev/data",
 };
 
 export function requestDatalogData (): RequestDatalogData {

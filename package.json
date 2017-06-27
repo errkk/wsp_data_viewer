@@ -52,6 +52,5 @@
       "eslint --fix --quiet; exit 0",
       "git add"
     ]
-  },
-  "proxy": "https://zbutev8ga7.execute-api.eu-west-2.amazonaws.com/"
+  }
 }
