@@ -21,10 +21,10 @@ export default class ChartComponent extends React.PureComponent {
   render () {
     const { rows, children } = this.props;
     return (
-      <ResponsiveContainer height={300} padding={20}>
+      <ResponsiveContainer height={300} padding={10}>
         <LineChart width={500} height={300} data={rows}>
           <XAxis dataKey="timestamp" />
-          <Tooltip/>
+          <Tooltip />
           <Legend />
           {children}
         </LineChart>

@@ -35,7 +35,8 @@
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.2",
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "serverless-single-page-app-plugin": "file:./sls-plugins/serverless-single-page-app-plugin"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -45,7 +46,8 @@
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "deploy": "serverless syncToS3"
   },
   "lint-staged": {
     "*.js": [

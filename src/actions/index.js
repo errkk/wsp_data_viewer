@@ -20,7 +20,7 @@ import { getLastRow } from "../selectors/datalog-selectors";
 import { getDataAge } from "../helpers/utils";
 
 const ENDPOINTS = {
-  DATALOG: "https://zbutev8ga7.execute-api.eu-west-2.amazonaws.com/dev/data",
+  DATALOG: "https://wottonpool.co.uk/panel/json/data/1/",
 };
 
 export function requestDatalogData (): RequestDatalogData {
@@ -29,7 +29,7 @@ export function requestDatalogData (): RequestDatalogData {
   };
 }
 
-export function receiveDatalogData (data: { data: DataRows }): ReceiveDatalogData {
+export function receiveDatalogData (data: DataRows): ReceiveDatalogData {
   return {
     type: RECEIVE_DATALOG_DATA,
     data,

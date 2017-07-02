@@ -33,7 +33,6 @@ export default class HeaderComponent extends React.PureComponent {
     this.state = {
       drawer: false,
     };
-
     setInterval(this.isItTimeToReFetchYet, 1000);
   }
 

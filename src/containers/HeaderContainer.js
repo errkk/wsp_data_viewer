@@ -11,7 +11,7 @@ import { getLastRow } from "../selectors/datalog-selectors";
 
 import HeaderComponent from "../components/HeaderComponent";
 
-const stateToProps = (state: State) => {
+const stateToProps = (state: State, ownProps) => {
   const { loading } = state.datalog;
   return {
     loading,

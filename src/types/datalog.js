@@ -1,12 +1,25 @@
 // @flow
 
-export type Row = {
+ type RawRow = {
   chlorine: Number,
-  tempInternal: Number,
-  tempExternal: Number,
+  t1: Number,
+  t2: Number,
+  t3: Number,
+  t4: Number,
   ph: Number,
   timestamp: Date,
 };
+
+type MappedRow = {
+  chlorine: Number,
+  airTemp: Number,
+  panelTemp: Number,
+  poolTemp: Number,
+  ph: Number,
+  timestamp: Date,
+};
+
+export Row = RawRow | MappedRow;
 
 export type DataRows = Array<Row>;
 
@@ -16,7 +29,7 @@ export type RequestDatalogData = {
 
 export type ReceiveDatalogData = {
   type: 'RECEIVE_DATALOG_DATA',
-  data: { data: DataRows },
+  data: DataRows,
 };
 
 export type Action = RequestDatalogData | ReceiveDatalogData;
