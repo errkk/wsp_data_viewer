@@ -7,6 +7,7 @@ import {
 } from "recharts";
 
 import ChartComponent from "./ChartComponent";
+import { colors } from "material-ui/styles";
 
 import type { DataRows } from "../types/datalog";
 
@@ -48,6 +49,7 @@ export default class ChartScreenComponent extends React.PureComponent {
             stroke='#88f4d8'
             strokeWidth={2}
             yAxisId={0}
+            label="Chlorine"
           />
           <Line
             type='monotone'
@@ -55,6 +57,7 @@ export default class ChartScreenComponent extends React.PureComponent {
             stroke='#8844d8'
             strokeWidth={2}
             yAxisId={1}
+            label="PH"
           />
         </ChartComponent>
         <h2>
@@ -63,15 +66,32 @@ export default class ChartScreenComponent extends React.PureComponent {
         <ChartComponent rows={rows}>
           <YAxis
             type="number"
-            domain={[22.0, 35.0]}
-            dot={false}
-            dataKey="temp"
+            domain={[12.0, 38.0]}
+            dataKey="tempInternal"
           />
           <Line
             type='monotone'
-            dataKey='temp'
-            stroke='#e804d8'
-            strokeWidth={2}
+            dataKey='poolTemp'
+            stroke={colors.blue500}
+            strokeWidth={3}
+            label="Pool temp"
+            dot={false}
+          />
+          <Line
+            type='monotone'
+            dataKey='panelTemp'
+            stroke={colors.orange500}
+            strokeWidth={3}
+            label="Panel output"
+            dot={false}
+          />
+          <Line
+            type='monotone'
+            dataKey='airTemp'
+            stroke={colors.green500}
+            strokeWidth={3}
+            label="Air temp"
+            dot={false}
           />
         </ChartComponent>
       </div>

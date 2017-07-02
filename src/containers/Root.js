@@ -1,10 +1,10 @@
 // @flow
 
 import React from "react";
+import DevTools from "./DevTools";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import DevTools from "./DevTools";
 import HeaderContainer from "../containers/HeaderContainer";
 import ChartScreenContainer from "../containers/ChartScreenContainer";
 import DashboardScreenContainer from "../containers/DashboardScreenContainer";

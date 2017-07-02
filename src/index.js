@@ -15,7 +15,6 @@ import "./sass/main.css";
 const history = createHistory();
 const store = configureStore(history);
 
-
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
