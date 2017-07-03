@@ -6,7 +6,6 @@ import createHistory from "history/createBrowserHistory";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import injectTapEventPlugin from "react-tap-event-plugin";
 
-import registerServiceWorker from "./registerServiceWorker";
 import Root from "./containers/Root";
 import configureStore from "./store/configureStore";
 
@@ -30,4 +29,3 @@ ReactDOM.render(
   <App />,
   document.getElementById("root")
 );
-registerServiceWorker();
