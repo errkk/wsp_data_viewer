@@ -2,7 +2,6 @@
 
 import React from "react";
 import {
-  Card,
   CardHeader,
   CardTitle,
 } from "material-ui/Card";
@@ -14,6 +13,7 @@ import {
 } from "recharts";
 
 import { getDataAge } from "../helpers/utils";
+import "../sass/Dashboard.css";
 
 type Props = {
   timestamp: ?Date,
@@ -24,6 +24,7 @@ type Props = {
   poolTemp: ?Number,
   daysSince: ?Number,
   rows: DataRows,
+  acceptableChlorine: boolean,
 };
 
 type State = {
@@ -36,6 +37,7 @@ type ItemProps = {
   title: String,
   subtitle: String,
   rows: DataRows,
+  isBad: ?boolean,
 };
 
 const STROKE_WIDTH = 3;
@@ -50,6 +52,8 @@ class DashboardItem extends React.PureComponent {
       title,
       subtitle,
       rows,
+      isBad,
+      unit,
     } = this.props;
     const lineChartProps = {
       width: 200,
@@ -58,14 +62,22 @@ class DashboardItem extends React.PureComponent {
       data: rows,
     };
 
-    return (
-      <Card>
-        <CardTitle
-          title={title}
-          subtitle={subtitle}
-        />
+    const classes = ["dashboard__item"];
+    if (isBad) {
+      classes.push("is-bad");
+    }
 
-        <ResponsiveContainer height={120}>
+    return (
+      <div className={classes.join(" ")}>
+        <h2 className="dashboard__item__title">
+          {title}
+          <span className="dashboard__item__unit">
+            {unit}
+          </span>
+        </h2>
+        <p className="dashboard__item__subtitle">{subtitle}</p>
+
+        <ResponsiveContainer height={60}>
           <LineChart {...lineChartProps}>
             <Line
               type='monotone'
@@ -76,7 +88,7 @@ class DashboardItem extends React.PureComponent {
             />
           </LineChart>
         </ResponsiveContainer>
-      </Card>
+      </div>
     );
   }
 }
@@ -118,6 +130,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
       airTemp,
       ph,
       chlorine,
+      acceptableChlorine,
     } = this.props;
     const { dataAge } = this.state;
     const updatedAt = timestamp ? `Updated: ${timestamp.toLocaleTimeString()}` : "";
@@ -138,44 +151,51 @@ export default class DashboardScreenComponent extends React.PureComponent {
         <h2>
           Dashboard
         </h2>
-        <DashboardItem
-          title={chlorine && `${chlorine.toFixed(2)} PPM`}
-          subtitle="PH"
-          dataKey='chlorine'
-          colour={colors.teal500}
-          rows={rows}
-        />
-        <DashboardItem
-          title={ph && ph.toFixed(2)}
-          subtitle="PH"
-          dataKey='ph'
-          colour={colors.indigo500}
-          rows={rows}
-        />
-        <DashboardItem
-          title={poolTemp && `${poolTemp.toFixed(2)}ºC`}
-          subtitle="Pool Temp"
-          dataKey='poolTemp'
-          colour={colors.blue500}
-          rows={rows}
-        />
-        <DashboardItem
-          title={panelTemp && `${panelTemp.toFixed(2)}ºC`}
-          subtitle="Panel Temp"
-          dataKey='panelTemp'
-          colour={colors.orange500}
-          rows={rows}
-        />
-        <DashboardItem
-          title={airTemp && `${airTemp.toFixed(2)}ºC`}
-          subtitle="Air Temp"
-          dataKey='airTemp'
-          colour={colors.green500}
-          rows={rows}
-        />
-        <CardHeader
-          title={ageString}
-        />
+        <div className="dashboard">
+          <DashboardItem
+            title={chlorine && chlorine.toFixed(2)}
+            subtitle="Chlorine"
+            dataKey='chlorine'
+            colour={colors.teal500}
+            rows={rows}
+            isBad={!acceptableChlorine}
+            unit="PPM"
+          />
+          <DashboardItem
+            title={ph && ph.toFixed(2)}
+            subtitle="PH"
+            dataKey='ph'
+            colour={colors.indigo500}
+            rows={rows}
+          />
+          <DashboardItem
+            title={poolTemp && poolTemp.toFixed(2)}
+            subtitle="Pool Temp"
+            dataKey='poolTemp'
+            colour={colors.blue500}
+            rows={rows}
+            unit="ºC"
+          />
+          <DashboardItem
+            title={panelTemp && panelTemp.toFixed(2)}
+            subtitle="Panel Temp"
+            dataKey='panelTemp'
+            colour={colors.orange500}
+            rows={rows}
+            unit="ºC"
+          />
+          <DashboardItem
+            title={airTemp && airTemp.toFixed(2)}
+            subtitle="Air Temp"
+            dataKey='airTemp'
+            colour={colors.green500}
+            rows={rows}
+            unit="ºC"
+          />
+        </div>
+        <p>
+          {ageString}
+        </p>
       </div>
     );
   }

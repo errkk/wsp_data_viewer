@@ -33,7 +33,7 @@ export default class HeaderComponent extends React.PureComponent {
     this.state = {
       drawer: false,
     };
-    setInterval(this.isItTimeToReFetchYet, 1000);
+    setInterval(this.isItTimeToReFetchYet, 5000);
   }
 
   isItTimeToReFetchYet = () => {
@@ -42,13 +42,9 @@ export default class HeaderComponent extends React.PureComponent {
     const now = new Date();
     const MAX_AGE = 15 * 60 * 1000;
     if (!lastRow) {
-      console.log("No last row");
       // TODO dont get stuck in a loop doing this if shit get stuck
       fetchData();
-      return;
-    }
-    if (now.getTime() - lastRow.timestamp.getTime() > MAX_AGE) {
-      console.log("we go stale data");
+    } else if (now.getTime() - lastRow.timestamp.getTime() > MAX_AGE) {
       fetchData();
     }
   }
@@ -69,6 +65,7 @@ export default class HeaderComponent extends React.PureComponent {
       <div>
         <AppBar
           title="Charts"
+          className="AppBar"
           iconElementLeft={<IconButton>{drawer ? <NavigationClose /> : <NavigationMenu />}</IconButton>}
           iconElementRight={this.reloadButton()}
           onLeftIconButtonTouchTap={this.handleToggle}
@@ -76,6 +73,7 @@ export default class HeaderComponent extends React.PureComponent {
         <Drawer open={drawer}>
           <AppBar
             title="Menu"
+            className="AppBar"
             iconElementLeft={<IconButton><NavigationClose /></IconButton>}
             onLeftIconButtonTouchTap={this.handleToggle}
           />

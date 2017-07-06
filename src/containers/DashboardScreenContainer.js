@@ -6,7 +6,7 @@ import type { Dispatch } from "react-redux";
 import type { State } from "../types";
 import type { Action as DatalogAction } from "../types/datalog";
 
-import { getLastRow } from "../selectors/datalog-selectors";
+import { getLastRow, acceptableChlorine } from "../selectors/datalog-selectors";
 
 import DashboardScreenComponent from "../components/DashboardScreenComponent";
 
@@ -23,6 +23,7 @@ const stateToProps = (state: State) => {
     rows,
     ...lastRow,
     daysSince: lastRow ? daysSince(lastRow.timestamp) : null,
+    acceptableChlorine: acceptableChlorine(state),
   };
 };
 

@@ -1,7 +1,7 @@
 body {
   font-family: Helvetica;
-  background: #eee;
-  color: #555;
+  background: #43576b;
+  color: #fff;
   margin: 0;
   padding: 0; }
 
@@ -23,3 +23,6 @@ a {
 
 .screen-container {
   padding: 20px; }
+
+.AppBar {
+  background: #0cb1da !important; }
