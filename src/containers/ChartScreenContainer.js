@@ -12,8 +12,10 @@ import ChartScreenComponent from "../components/ChartScreenComponent";
 
 const stateToProps = (state: State) => {
   const { rows } = state.datalog;
+  const awsRows = state.aws.rows;
   return {
     rows,
+    awsRows,
   };
 };
 

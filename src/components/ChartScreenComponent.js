@@ -10,23 +10,24 @@ import ChartComponent from "./ChartComponent";
 import { colors } from "material-ui/styles";
 
 import type { DataRows } from "../types/datalog";
+import type { AwsRows } from "../types/aws";
 
 type Props = {
-  fetchData: Function,
   rows: DataRows,
+  awsRows: AwsRows,
 };
 
 export default class ChartScreenComponent extends React.PureComponent {
   props: Props;
 
   render () {
-    const { rows } = this.props;
+    const { rows, awsRows } = this.props;
     return (
       <div className="screen-container">
         <h2>
         Chlorine & PH
         </h2>
-        <ChartComponent rows={rows}>
+        <ChartComponent rows={awsRows}>
           <YAxis
             type="number"
             domain={[0.0, 4.0]}

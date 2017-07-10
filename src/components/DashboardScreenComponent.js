@@ -25,6 +25,7 @@ type Props = {
   daysSince: ?Number,
   rows: DataRows,
   acceptableChlorine: boolean,
+  awsLoading: boolean,
 };
 
 type State = {

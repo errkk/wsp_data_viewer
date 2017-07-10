@@ -6,7 +6,8 @@ import type { Dispatch } from "react-redux";
 import type { State } from "../types";
 import type { Action as DatalogAction } from "../types/datalog";
 
-import { getLastRow, acceptableChlorine } from "../selectors/datalog-selectors";
+import { getLastRow } from "../selectors/datalog-selectors";
+import { getLastAwsRow, acceptableChlorine } from "../selectors/aws-selectors";
 
 import DashboardScreenComponent from "../components/DashboardScreenComponent";
 
@@ -18,10 +19,16 @@ const daysSince = (date: Date): number => {
 
 const stateToProps = (state: State) => {
   const { rows } = state.datalog;
+  const awsRows = state.aws.rows;
+  const awsLoading = state.aws.loading;
   const lastRow = getLastRow(state);
+  const lastAwsRow = getLastAwsRow(state);
   return {
     rows,
+    awsRows,
     ...lastRow,
+    ...lastAwsRow,
+    awsLoading,
     daysSince: lastRow ? daysSince(lastRow.timestamp) : null,
     acceptableChlorine: acceptableChlorine(state),
   };

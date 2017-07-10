@@ -1,21 +1,17 @@
 // @flow
 
  type RawRow = {
-  chlorine: Number,
   t1: Number,
   t2: Number,
   t3: Number,
   t4: Number,
-  ph: Number,
   timestamp: Date,
 };
 
 type MappedRow = {
-  chlorine: Number,
   airTemp: Number,
   panelTemp: Number,
   poolTemp: Number,
-  ph: Number,
   timestamp: Date,
 };
 

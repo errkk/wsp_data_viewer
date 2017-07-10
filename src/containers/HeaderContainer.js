@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 
 import type { State } from "../types";
 import type { Action as DatalogAction } from "../types/datalog";
-import * as datalogActions from "../actions/index";
+import * as actions from "../actions/index";
 import { getLastRow } from "../selectors/datalog-selectors";
 
 import HeaderComponent from "../components/HeaderComponent";
@@ -20,9 +20,12 @@ const stateToProps = (state: State, ownProps) => {
 };
 
 const dispatchToProps = (dispatch: Dispatch<DatalogAction>) => {
-  const boundDatalogActions = bindActionCreators(datalogActions, dispatch);
+  const boundActions = bindActionCreators(actions, dispatch);
   return {
-    fetchData: boundDatalogActions.fetchDatalogData,
+    fetchData: () => {
+      boundActions.fetchDatalogData();
+      boundActions.fetchAwsData();
+    },
   };
 };
 
