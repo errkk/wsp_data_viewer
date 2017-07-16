@@ -18,12 +18,15 @@
   box-sizing: border-box;
   text-align: center;
   color: #43576b;
-  border-bottom: 1px solid #eee; }
+  border-bottom: 1px solid #eee;
+  transition: opacity 200ms ease; }
   .dashboard__item:nth-child(odd) {
     border-right: 1px solid #eee; }
   .dashboard__item.is-bad {
     animation: bad 1000ms infinite linear alternate;
     color: #fff; }
+  .dashboard__item.is-loading {
+    opacity: 0.3; }
   .dashboard__item__title {
     font-size: 40px;
     font-weight: 300;
@@ -31,6 +34,8 @@
     line-height: 1;
     margin: 0;
     text-align: center; }
+    .is-loading .dashboard__item__title {
+      font-size: 20px; }
   .dashboard__item__unit {
     font-weight: 400;
     font-size: 15px;

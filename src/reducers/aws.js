@@ -9,12 +9,14 @@ import type {
   AwsRows,
 } from "../types/aws";
 
-const defaultState = {
-  rows: [],
-};
-
 type State = {
   rows: AwsRows,
+  loading: boolean,
+};
+
+const defaultState: State = {
+  rows: [],
+  loading: false,
 };
 
 export default (state: State = defaultState, action: Action) => {

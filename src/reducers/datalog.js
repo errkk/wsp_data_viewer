@@ -11,12 +11,14 @@ import type {
   DataRows,
 } from "../types/datalog";
 
-const defaultState = {
-  rows: [],
-};
-
 type State = {
   rows: DataRows,
+  loading: boolean,
+};
+
+const defaultState: State = {
+  rows: [],
+  loading: false,
 };
 
 export default (state: State = defaultState, action: Action) => {

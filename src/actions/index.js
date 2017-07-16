@@ -17,13 +17,6 @@ import {
   RECEIVE_AWS_DATA,
 } from "./actionTypes";
 
-import type {
-  State,
-} from "../types";
-
-import { getLastRow } from "../selectors/datalog-selectors";
-import { getDataAge } from "../helpers/utils";
-
 const ENDPOINTS = {
   DATALOG: "https://wottonpool.co.uk/panel/json/data/1/",
   AWS: "https://zbutev8ga7.execute-api.eu-west-2.amazonaws.com/dev/data",
@@ -71,22 +64,5 @@ export function fetchDatalogData () {
     return fetch(ENDPOINTS.DATALOG)
       .then(res => res.json())
       .then(json => dispatch(receiveDatalogData(json)));
-  };
-}
-
-export function setupDataRefresher () {
-  return (dispatch: Dispatch, state: State) => {
-    const timestamp = getLastRow(state);
-    if (!timestamp) return;
-    const dataAge = getDataAge(timestamp);
-    const MAX_AGE = 15 * 60;
-    const timeTilRefresh = MAX_AGE - dataAge;
-    if (timeTilRefresh > 0) {
-      console.log(`Scheduling fetch in ${timeTilRefresh} seconds`);
-      setTimeout(() => dispatch(fetchDatalogData));
-    }
-    return {
-    // TODO return something that tells the store there is a timeout set
-    };
   };
 }

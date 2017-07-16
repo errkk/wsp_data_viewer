@@ -1,10 +1,6 @@
 // @flow
 
 import React from "react";
-import {
-  CardHeader,
-  CardTitle,
-} from "material-ui/Card";
 import { colors } from "material-ui/styles";
 import {
   Line,
@@ -39,6 +35,7 @@ type ItemProps = {
   subtitle: String,
   rows: DataRows,
   isBad: ?boolean,
+  loading: ?boolean,
 };
 
 const STROKE_WIDTH = 3;
@@ -55,6 +52,7 @@ class DashboardItem extends React.PureComponent {
       rows,
       isBad,
       unit,
+      loading,
     } = this.props;
     const lineChartProps = {
       width: 200,
@@ -66,6 +64,10 @@ class DashboardItem extends React.PureComponent {
     const classes = ["dashboard__item"];
     if (isBad) {
       classes.push("is-bad");
+    }
+
+    if (loading) {
+      classes.push("is-loading");
     }
 
     return (
@@ -132,6 +134,8 @@ export default class DashboardScreenComponent extends React.PureComponent {
       ph,
       chlorine,
       acceptableChlorine,
+      loading,
+      awsLoading,
     } = this.props;
     const { dataAge } = this.state;
     const updatedAt = timestamp ? `Updated: ${timestamp.toLocaleTimeString()}` : "";
@@ -161,6 +165,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             rows={rows}
             isBad={!acceptableChlorine}
             unit="PPM"
+            loading={awsLoading}
           />
           <DashboardItem
             title={ph && ph.toFixed(2)}
@@ -168,6 +173,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             dataKey='ph'
             colour={colors.indigo500}
             rows={rows}
+            loading={awsLoading}
           />
           <DashboardItem
             title={poolTemp && poolTemp.toFixed(2)}
@@ -176,6 +182,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             colour={colors.blue500}
             rows={rows}
             unit="ºC"
+            loading={loading}
           />
           <DashboardItem
             title={panelTemp && panelTemp.toFixed(2)}
@@ -184,6 +191,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             colour={colors.orange500}
             rows={rows}
             unit="ºC"
+            loading={loading}
           />
           <DashboardItem
             title={airTemp && airTemp.toFixed(2)}
@@ -192,6 +200,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             colour={colors.green500}
             rows={rows}
             unit="ºC"
+            loading={loading}
           />
         </div>
         <p>

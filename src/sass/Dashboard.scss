@@ -26,6 +26,7 @@
   color: $greyBlue;
 
   border-bottom: 1px solid #eee;
+  transition: opacity 200ms ease;
 
   &:nth-child(odd) {
     border-right: 1px solid #eee;
@@ -36,6 +37,10 @@
     color: #fff;
   }
 
+  &.is-loading {
+    opacity: 0.3;
+  }
+
   &__title {
     font-size: 40px;
     font-weight: 300;
@@ -43,6 +48,10 @@
     line-height: 1;
     margin: 0;
     text-align: center;
+
+    .is-loading & {
+      font-size: 20px;
+    }
   }
   &__unit {
     font-weight: 400;
