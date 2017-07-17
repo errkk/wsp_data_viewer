@@ -23,6 +23,12 @@ a {
 
 .screen-container {
   padding: 20px; }
+  .screen-container--charts {
+    background: #eee;
+    color: #222;
+    padding-left: 0; }
+    .screen-container--charts h2 {
+      padding-left: 10px; }
 
 .AppBar {
   background: #0cb1da !important; }

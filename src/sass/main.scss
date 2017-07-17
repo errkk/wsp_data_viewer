@@ -29,6 +29,16 @@ a {
 }
 .screen-container {
   padding: 20px;
+
+  &--charts {
+    background: #eee;
+    color: #222;
+    padding-left: 0;
+
+    h2 {
+      padding-left: 10px;
+    }
+  }
 }
 .AppBar {
   background: $turkLight !important; //eww

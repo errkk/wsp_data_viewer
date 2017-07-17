@@ -18,7 +18,7 @@ const store = configureStore(history);
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-const App = () => (
+export const App = () => (
   <MuiThemeProvider>
     <Root store={store} history={history} />
   </MuiThemeProvider>

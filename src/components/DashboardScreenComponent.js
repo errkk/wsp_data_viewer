@@ -2,6 +2,7 @@
 
 import React from "react";
 import { colors } from "material-ui/styles";
+import { Link } from "react-router-dom";
 import {
   Line,
   LineChart,
@@ -40,6 +41,7 @@ type ItemProps = {
   isBad: ?Boolean,
   loading: ?Boolean,
   unit: ?String,
+  link: String,
 };
 
 const STROKE_WIDTH = 3;
@@ -57,6 +59,7 @@ class DashboardItem extends React.PureComponent {
       unit,
       loading,
       rows,
+      link,
     } = this.props;
     const lineChartProps = {
       width: 200,
@@ -76,25 +79,28 @@ class DashboardItem extends React.PureComponent {
 
     return (
       <div className={classes.join(" ")}>
-        <h2 className="dashboard__item__title">
-          {title}
-          <span className="dashboard__item__unit">
-            {unit}
-          </span>
-        </h2>
-        <p className="dashboard__item__subtitle">{subtitle}</p>
+        <Link to={link}>
+          <h2 className="dashboard__item__title">
+            {title}
+            <span className="dashboard__item__unit">
+              {unit}
+            </span>
+          </h2>
+          <p className="dashboard__item__subtitle">{subtitle}</p>
 
-        <ResponsiveContainer height={60}>
-          <LineChart {...lineChartProps}>
-            <Line
-              type='monotone'
-              dataKey={dataKey}
-              stroke={colour}
-              strokeWidth={STROKE_WIDTH}
-              dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+
+          <ResponsiveContainer height={60}>
+            <LineChart {...lineChartProps}>
+              <Line
+                type='monotone'
+                dataKey={dataKey}
+                stroke={colour}
+                strokeWidth={STROKE_WIDTH}
+                dot={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </Link>
       </div>
     );
   }
@@ -171,6 +177,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             isBad={!acceptableChlorine}
             unit="PPM"
             loading={awsLoading}
+            link="/chlorine"
           />
           <DashboardItem
             title={ph && ph.toFixed(2)}
@@ -179,6 +186,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             colour={colors.indigo500}
             rows={awsRows}
             loading={awsLoading}
+            link="/ph"
           />
           <DashboardItem
             title={poolTemp && poolTemp.toFixed(2)}
@@ -188,6 +196,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             rows={rows}
             unit="ºC"
             loading={loading}
+            link="/temperature"
           />
           <DashboardItem
             title={panelTemp && panelTemp.toFixed(2)}
@@ -197,6 +206,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             rows={rows}
             unit="ºC"
             loading={loading}
+            link="/temperature"
           />
           <DashboardItem
             title={airTemp && airTemp.toFixed(2)}
@@ -206,6 +216,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             rows={rows}
             unit="ºC"
             loading={loading}
+            link="/temperature"
           />
         </div>
         <p>

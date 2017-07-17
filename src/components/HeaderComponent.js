@@ -81,7 +81,13 @@ export default class HeaderComponent extends React.PureComponent {
             <Link className="MenuItem__Link" to="/">Dashboard</Link>
           </MenuItem>
           <MenuItem>
-            <Link className="MenuItem__Link" to="/chart">Chart</Link>
+            <Link className="MenuItem__Link" to="/chlorine">Chlorine</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link className="MenuItem__Link" to="/ph">PH</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link className="MenuItem__Link" to="/temperature">Temperature</Link>
           </MenuItem>
         </Drawer>
       </div>

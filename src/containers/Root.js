@@ -6,7 +6,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import HeaderContainer from "../containers/HeaderContainer";
-import ChartScreenContainer from "../containers/ChartScreenContainer";
+import ChartScreenTempContainer from "../containers/ChartScreenTempContainer";
+import ChartScreenPhContainer from "../containers/ChartScreenPhContainer";
+import ChartScreenChlorineContainer from "../containers/ChartScreenChlorineContainer";
 import DashboardScreenContainer from "../containers/DashboardScreenContainer";
 
 type Props = { store: Object, history: Object };
@@ -19,7 +21,9 @@ const Root = (props: Props) => {
         <div>
           <HeaderContainer />
           <Route exact path="/" component={DashboardScreenContainer} />
-          <Route path="/chart" component={ChartScreenContainer} />
+          <Route path="/temperature" component={ChartScreenTempContainer} />
+          <Route path="/chlorine" component={ChartScreenChlorineContainer} />
+          <Route path="/ph" component={ChartScreenPhContainer} />
           {false && <DevTools />}
         </div>
       </Router>

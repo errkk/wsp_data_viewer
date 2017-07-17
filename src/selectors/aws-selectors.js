@@ -5,7 +5,7 @@ import type { AwsRow, AwsRows } from "../types/aws";
 import type { State } from "../types";
 
 const CHLORINE_LOWER_LIMIT = 2.1;
-const CHLORINE_UPPER_LIMIT = 2.5;
+const CHLORINE_UPPER_LIMIT = 2.9;
 
 const getRows = (state: State) => state.aws.rows;
 

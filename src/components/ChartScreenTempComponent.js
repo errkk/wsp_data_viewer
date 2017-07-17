@@ -14,53 +14,15 @@ import type { AwsRows } from "../types/aws";
 
 type Props = {
   rows: DataRows,
-  awsRows: AwsRows,
 };
 
 export default class ChartScreenComponent extends React.PureComponent {
   props: Props;
 
   render () {
-    const { rows, awsRows } = this.props;
+    const { rows } = this.props;
     return (
-      <div className="screen-container">
-        <h2>
-        Chlorine & PH
-        </h2>
-        <ChartComponent rows={awsRows}>
-          <YAxis
-            type="number"
-            domain={[0.0, 4.0]}
-            dot={false}
-            dataKey="chlorine"
-            orientation="right"
-            yAxisId={0}
-          />
-          <YAxis
-            type="number"
-            domain={[6.0, 8.0]}
-            dot={false}
-            dataKey="ph"
-            orientation="left"
-            yAxisId={1}
-          />
-          <Line
-            type='monotone'
-            dataKey='chlorine'
-            stroke='#88f4d8'
-            strokeWidth={2}
-            yAxisId={0}
-            label="Chlorine"
-          />
-          <Line
-            type='monotone'
-            dataKey='ph'
-            stroke='#8844d8'
-            strokeWidth={2}
-            yAxisId={1}
-            label="PH"
-          />
-        </ChartComponent>
+      <div className="screen-container screen-container--charts">
         <h2>
         Temperature
         </h2>
