@@ -8,6 +8,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import type { DataRows } from "../types/datalog";
+import type { AwsRows } from "../types/aws";
+
 import { getDataAge } from "../helpers/utils";
 import "../sass/Dashboard.css";
 
@@ -33,9 +36,10 @@ type ItemProps = {
   dataKey: String,
   title: String,
   subtitle: String,
-  rows: DataRows,
-  isBad: ?boolean,
-  loading: ?boolean,
+  rows: (DataRows|AwsRows),
+  isBad: ?Boolean,
+  loading: ?Boolean,
+  unit: ?String,
 };
 
 const STROKE_WIDTH = 3;
@@ -49,10 +53,10 @@ class DashboardItem extends React.PureComponent {
       dataKey,
       title,
       subtitle,
-      rows,
       isBad,
       unit,
       loading,
+      rows,
     } = this.props;
     const lineChartProps = {
       width: 200,
@@ -62,7 +66,7 @@ class DashboardItem extends React.PureComponent {
     };
 
     const classes = ["dashboard__item"];
-    if (isBad) {
+    if (isBad && !loading && rows.length) {
       classes.push("is-bad");
     }
 
@@ -127,6 +131,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
     const {
       daysSince,
       rows,
+      awsRows,
       timestamp,
       panelTemp,
       poolTemp,
@@ -162,7 +167,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             subtitle="Chlorine"
             dataKey='chlorine'
             colour={colors.teal500}
-            rows={rows}
+            rows={awsRows}
             isBad={!acceptableChlorine}
             unit="PPM"
             loading={awsLoading}
@@ -172,7 +177,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
             subtitle="PH"
             dataKey='ph'
             colour={colors.indigo500}
-            rows={rows}
+            rows={awsRows}
             loading={awsLoading}
           />
           <DashboardItem
