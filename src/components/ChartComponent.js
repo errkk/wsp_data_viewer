@@ -23,7 +23,7 @@ export default class ChartComponent extends React.PureComponent {
     return (
       <ResponsiveContainer height={300}>
         <LineChart width={500} height={300} data={rows}>
-          <XAxis dataKey="timestamp" />
+          <XAxis dataKey="timestamp" label="Time" scale="utcTime" />
           <Tooltip />
           <Legend />
           {children}

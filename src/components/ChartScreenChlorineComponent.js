@@ -4,6 +4,7 @@ import React from "react";
 import {
   Line,
   YAxis,
+  ReferenceLine,
 } from "recharts";
 
 import ChartComponent from "./ChartComponent";
@@ -36,11 +37,13 @@ export default class ChartScreenComponent extends React.PureComponent {
           <Line
             type='monotone'
             dataKey='chlorine'
-            stroke='#88f4d8'
+            stroke={colors.green500}
             strokeWidth={2}
             yAxisId={0}
             label="Chlorine"
           />
+          <ReferenceLine y={2.8} stroke="rgba(0, 0, 0, 0.2)" />
+          <ReferenceLine y={2.4} stroke="rgba(0, 0, 0, 0.2)" />
         </ChartComponent>
       </div>
     );

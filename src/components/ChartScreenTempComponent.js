@@ -10,7 +10,6 @@ import ChartComponent from "./ChartComponent";
 import { colors } from "material-ui/styles";
 
 import type { DataRows } from "../types/datalog";
-import type { AwsRows } from "../types/aws";
 
 type Props = {
   rows: DataRows,

@@ -37,7 +37,7 @@ export default class ChartScreenComponent extends React.PureComponent {
           <Line
             type='monotone'
             dataKey='ph'
-            stroke='#8844d8'
+            stroke={colors.red500}
             strokeWidth={2}
             yAxisId={1}
             label="PH"

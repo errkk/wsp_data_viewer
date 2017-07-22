@@ -44,7 +44,7 @@ export default class HeaderComponent extends React.PureComponent {
     if (!lastRow) {
       // TODO dont get stuck in a loop doing this if shit get stuck
       fetchData();
-    } else if (now.getTime() - lastRow.timestamp.getTime() > MAX_AGE) {
+    } else if (now.getTime() - lastRow.datetime.getTime() > MAX_AGE) {
       fetchData();
     }
   }

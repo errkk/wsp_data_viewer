@@ -28,7 +28,8 @@ export default (state: State = defaultState, action: Action) => {
       rows: action.data.map(i => {
         const { chlorine, ph, timestamp } = i;
         return {
-          timestamp: new Date(timestamp),
+          datetime: new Date(timestamp),
+          timestamp,
           chlorine,
           ph,
         };

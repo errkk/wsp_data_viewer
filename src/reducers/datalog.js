@@ -32,7 +32,8 @@ export default (state: State = defaultState, action: Action) => {
       rows: action.data.map(i => {
         const { t1, t2, t4, timestamp } = i;
         return {
-          timestamp: new Date(timestamp),
+          datetime: new Date(timestamp),
+          timestamp,
           poolTemp: t1,
           panelTemp: t2,
           airTemp: t4,

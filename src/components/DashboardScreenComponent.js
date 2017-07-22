@@ -16,7 +16,8 @@ import { getDataAge } from "../helpers/utils";
 import "../sass/Dashboard.css";
 
 type Props = {
-  timestamp: ?Date,
+  timestamp: ?String,
+  datetime: ?Date,
   chlorine: ?Number,
   ph: ?Number,
   panelTemp: ?Number,
@@ -127,9 +128,9 @@ export default class DashboardScreenComponent extends React.PureComponent {
   }
 
   updateTimeAgo = (): void => {
-    const { timestamp } = this.props;
-    if (!timestamp) return;
-    const dataAge = getDataAge(timestamp);
+    const { datetime } = this.props;
+    if (!datetime) return;
+    const dataAge = getDataAge(datetime);
     this.setState({dataAge});
   }
 
@@ -138,7 +139,7 @@ export default class DashboardScreenComponent extends React.PureComponent {
       daysSince,
       rows,
       awsRows,
-      timestamp,
+      datetime,
       panelTemp,
       poolTemp,
       airTemp,
@@ -149,12 +150,12 @@ export default class DashboardScreenComponent extends React.PureComponent {
       awsLoading,
     } = this.props;
     const { dataAge } = this.state;
-    const updatedAt = timestamp ? `Updated: ${timestamp.toLocaleTimeString()}` : "";
+    const updatedAt = datetime ? `Updated: ${datetime.toLocaleTimeString()}` : "";
     const days = daysSince ? ` – ${daysSince.toFixed(0)} days ago` : "";
 
     let ageString;
     if (dataAge > 60 * 60) {
-      ageString = timestamp && updatedAt + days;
+      ageString = datetime && updatedAt + days;
     } else if (dataAge > 59) {
       ageString = `Updated: ${Math.round(dataAge / 60)} minutes ago`;
     } else {
