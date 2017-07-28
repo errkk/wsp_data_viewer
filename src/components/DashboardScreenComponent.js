@@ -25,6 +25,7 @@ type Props = {
   poolTemp: ?Number,
   daysSince: ?Number,
   rows: DataRows,
+  awsRows: AwsRows,
   acceptableChlorine: boolean,
   awsLoading: boolean,
 };

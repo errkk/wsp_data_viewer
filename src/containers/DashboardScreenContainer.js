@@ -29,7 +29,8 @@ const stateToProps = (state: State) => {
     ...lastRow,
     ...lastAwsRow,
     awsLoading,
-    daysSince: lastRow ? daysSince(lastRow.timestamp) : null,
+    daysSince: lastAwsRow ? daysSince(lastAwsRow.datetime) : null,
+    datetime: lastAwsRow ? lastAwsRow.datetime : null,
     acceptableChlorine: acceptableChlorine(state),
   };
 };
